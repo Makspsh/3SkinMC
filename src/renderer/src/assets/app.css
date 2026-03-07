@@ -1,0 +1,39 @@
+:root {
+    --bg-color: #0D2232;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+    gap: 4px;
+}
+
+.tools {
+    background: var(--bg-color);
+    flex: 2 1 auto;
+}
+
+.selection {
+    flex: 28 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.color {
+    background: var(--bg-color);
+    flex: 1 1 auto;
+}
+
+.preview {
+    background: var(--bg-color);
+    flex: 1 1 auto;
+}
+
+.editor {
+    background: var(--bg-color);
+    flex: 70 1 auto;
+}
