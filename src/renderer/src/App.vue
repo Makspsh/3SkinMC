@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import MenuBar from './components/MenuBar.vue';
 import Tools from './components/Tools.vue';
 import Color from './components/Color.vue';
 import Preview from './components/Preview.vue';
