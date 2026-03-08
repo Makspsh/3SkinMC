@@ -29,11 +29,8 @@ import rubberBandIcon from '@resources/tools/rubber-band.png';
   counter-reset: tool;
 }
 
-.tool-item {
 
-}
-
-button {
+.tool-btn {
   all: unset;
   width: 100%;
   height: 48px;
@@ -43,16 +40,16 @@ button {
   transition: all .2s ease;
 }
 
-button:hover,
-button:focus {
+.tool-btn:hover,
+.tool-btn:focus {
   border-left-color: #fff;
 }
 
-button:active {
+.tool-btn:active {
   border-left-color: #fff;
 }
 
-button::after {
+.tool-btn::after {
   counter-increment: tool;
   content: counter(tool);
 }
