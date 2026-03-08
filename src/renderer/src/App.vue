@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Tools from './components/Tools.vue';
 import Color from './components/Color.vue';
-import Preview from './components/ToolOptions.vue';
+import ToolOptions from './components/ToolOptions.vue';
 import Editor from './components/Editor.vue';
 
 </script>
@@ -16,8 +16,8 @@ import Editor from './components/Editor.vue';
         <div class="color">
           <Color />
         </div>
-        <div class="preview">
-          <Preview />
+        <div class="tool-options">
+          <ToolOptions />
         </div>
       </section>
       <section class="editor">
