@@ -2,6 +2,14 @@
     --bg-color: #0D2232;
 }
 
+ul {
+    all: unset;
+}
+
+li {
+    all: unset;
+}
+
 main {
     display: flex;
     justify-content: space-between;
