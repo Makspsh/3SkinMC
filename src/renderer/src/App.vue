@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Tools from './components/Tools.vue';
 import Color from './components/Color.vue';
-import Preview from './components/Preview.vue';
+import Preview from './components/ToolOptions.vue';
 import Editor from './components/Editor.vue';
 
 </script>

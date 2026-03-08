@@ -4,7 +4,7 @@
 </script>
 
 <template>
-<div>Preview</div>
+<div>Tool Options</div>
 </template>
 
 <style>
