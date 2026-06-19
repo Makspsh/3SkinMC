@@ -3,6 +3,9 @@ import colorPickerDefaultIcon from '@resources/colorPicker/colorPicker-default-i
 import colorPickerExtraIcon from '@resources/colorPicker/colorPicker-extra-icon.png';
 import colorPickerFavIcon from '@resources/colorPicker/colorPicker-fav-icon.png';
 
+import { useEditorStore } from "@renderer/stores/editorStore"
+const editor = useEditorStore()
+
 </script>
 
 <template>
@@ -25,7 +28,9 @@ import colorPickerFavIcon from '@resources/colorPicker/colorPicker-fav-icon.png'
             </button>
         </div>
     </nav>
-    <section class="color_content"></section>
+    <section class="color_content">
+        <input type="color" v-model="editor.color" />
+    </section>
     <section class="color_content"></section>
 </template>
 
@@ -43,7 +48,7 @@ import colorPickerFavIcon from '@resources/colorPicker/colorPicker-fav-icon.png'
 
 .color_tab-btn {
     padding: 8px 8px 4px 8px;
-    border-top: var(--color-gray) 2px  solid;
+    border-top: var(--color-gray) 2px solid;
     border-radius: 12px;
     background: var(--color-gray);
     transition: all .3s;

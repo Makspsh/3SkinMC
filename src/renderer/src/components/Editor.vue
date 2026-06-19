@@ -1,6 +1,6 @@
 <template>
     <div class="editor">
-        <input type="color" v-model="currentColor">
+        <input type="color" v-model="editor.color" />
 
         <div class="canvas-container">
             <!-- Фон -->
@@ -36,6 +36,8 @@
 
 import { minecraftUV } from "@renderer/data/minecraftUV.js"
 import { ref, onMounted } from "vue"
+import { useEditorStore } from "@renderer/stores/editorStore"
+const editor = useEditorStore()
 
 
 // КОНСТАНТЫ
@@ -66,16 +68,6 @@ const currentColor = ref("#ff0000")
 let isDrawing = false
 let hoverX = -1
 let hoverY = -1
-
-
-// ДАННЫЕ СКИНА
-
-const skin = ref(
-    Array(SKIN_SIZE)
-        .fill()
-        .map(() => Array(SKIN_SIZE).fill(null))
-)
-
 
 // ДОСТУПНЫЕ ПИКСЕЛИ
 
@@ -135,7 +127,7 @@ function drawSkin() {
 
     for (let y = 0; y < SKIN_SIZE; y++) {
         for (let x = 0; x < SKIN_SIZE; x++) {
-            const color = skin.value[y][x]
+            const color = editor.skin.getPixel()
 
             if (!color)
                 continue
@@ -156,11 +148,11 @@ function drawSkin() {
 // РИСОВАНИЕ
 
 function paintPixel(x, y) {
+
     if (!isAllowedPixel(x, y))
         return
 
-    skin.value[y][x] = currentColor.value
-
+    editor.useTool(x, y)
     drawSkin()
 }
 

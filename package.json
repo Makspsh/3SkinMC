@@ -25,6 +25,7 @@
     "@electron-toolkit/utils": "^4.0.0",
     "@labymod/skinview3d": "^2.0.2",
     "electron-color-picker": "^0.2.0",
+    "pinia": "^3.0.4",
     "skinview3d": "^3.4.2",
     "three": "^0.184.0"
   },
