@@ -1,29 +1,35 @@
 <script setup lang="ts">
-import Tools from './components/Tools.vue';
-import Color from './components/Color.vue';
-import ToolOptions from './components/ToolOptions.vue';
+import ColorPicker from './components/ColorPicker.vue';
+import ColorFav from './components/ColorFav.vue';
 import Editor from './components/Editor.vue';
+import ToolPanel from './components/ToolPanel.vue';
+import Options from './components/Options.vue';
 
 </script>
 
 <template>
 
-    <main class="main">
-      <aside class="tools">
-        <Tools />
+    <div class="wrapper">
+      <aside class="color-section">
+        <section class="color_picker">
+          <ColorPicker />
+        </section>
+        <div class="color_fav">
+          <ColorFav />
+        </div>
       </aside>
-      <section class="selection">
-        <div class="color">
-          <Color />
-        </div>
-        <div class="tool-options">
-          <ToolOptions />
-        </div>
-      </section>
-      <section class="editor">
+
+      <main class="editor-section">
         <Editor />
-      </section>
-    </main>
+        <section class="toolPanel">
+          <ToolPanel />
+        </section>
+      </main>
+
+      <aside class="options-section">
+        <Options />
+      </aside>
+    </div>
 
 </template>
 
