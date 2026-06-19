@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ColorPicker from './components/ColorPicker.vue';
 import ColorFav from './components/ColorFav.vue';
-import Editor from './components/Editor.vue';
+import SkinEditor from './components/SkinEditor.vue';
 import ToolPanel from './components/ToolPanel.vue';
 import Options from './components/Options.vue';
 
@@ -20,7 +20,7 @@ import Options from './components/Options.vue';
       </aside>
 
       <main class="editor-section">
-        <Editor />
+        <SkinEditor />
         <section class="toolPanel">
           <ToolPanel />
         </section>

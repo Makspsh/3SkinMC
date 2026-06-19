@@ -83,8 +83,6 @@ import redoIcon from '@resources/tools/redo-icon.png';
     transform: scale(1.05);
 }
 
-.toolPanel_undo {}
-
 .toolPanel_bar {
     display: flex;
     border: 3px #fff solid;
@@ -133,7 +131,5 @@ import redoIcon from '@resources/tools/redo-icon.png';
     width: 48px;
     height: 48px;
 }
-
-.toolPanel_redo {}
 
 </style>
