@@ -23,6 +23,7 @@ export const useEditorStore = defineStore(
         const tool = ref("brush")
         const zoom = ref(8)
         const showOuterLayer = ref(true)
+        const skinVersion = ref(0)
 
         // ИНСТРУМЕНТЫ
         function drawPixel(x, y) {
@@ -31,6 +32,7 @@ export const useEditorStore = defineStore(
                 y,
                 color.value
             )
+            touchSkin()
         }
 
         function erasePixel(x, y) {
@@ -44,7 +46,7 @@ export const useEditorStore = defineStore(
                     a: 0
                 }
             )
-
+            touchSkin()
         }
 
         // Универсальное действие
@@ -82,9 +84,13 @@ export const useEditorStore = defineStore(
         // УПРАВЛЕНИЕ СКИНОМ
         function clearSkin() {
             skin.value.clear()
+            touchSkin()
         }
         function replaceSkin(newSkin) {
             skin.value = newSkin
+        }
+        function touchSkin() {
+            skinVersion.value++
         }
 
         // EXPORT
@@ -95,6 +101,7 @@ export const useEditorStore = defineStore(
             tool,
             zoom,
             showOuterLayer,
+            skinVersion,
 
             // инструменты
             drawPixel,

@@ -75,15 +75,6 @@ let isDrawing = false
 let hoverX = -1
 let hoverY = -1
 
-function initContexts() {
-    bgCtx = backgroundCanvas.value.getContext("2d")
-    skinCtx = skinCanvas.value.getContext("2d")
-    overlayCtx = overlayCanvas.value.getContext("2d")
-    bgCtx.imageSmoothingEnabled = false
-    skinCtx.imageSmoothingEnabled = false
-    overlayCtx.imageSmoothingEnabled = false
-}
-
 function isAllowedPixel(x, y) {
     return minecraftUV.some(uv =>
         x >= uv.x &&
@@ -91,12 +82,6 @@ function isAllowedPixel(x, y) {
         y >= uv.y &&
         y < uv.y + uv.height
     )
-}
-
-function redraw() {
-    drawBackground()
-    drawSkin()
-    drawOverlay()
 }
 
 // BACKGROUND
@@ -346,6 +331,13 @@ watch(
 
 )
 
+watch(
+    () => editor.skinVersion,
+    () => {
+        drawSkin()
+    }
+)
+
 </script>
 
 
@@ -360,17 +352,15 @@ watch(
 
 .canvas-container {
     position: relative;
-    width: 512px;
-    height: 512px;
     border: 2px solid #444;
+    display: inline-block;
+    image-rendering: pixelated;
 }
 
 .canvas-container canvas {
     position: absolute;
     top: 0;
     left: 0;
-    width: 512px;
-    height: 512px;
 }
 
 </style>
