@@ -4,6 +4,16 @@ import ColorFav from './components/ColorFav.vue';
 import SkinEditor from './components/SkinEditor.vue';
 import ToolPanel from './components/ToolPanel.vue';
 import Options from './components/Options.vue';
+import SkinPreview from './preview/SkinPreview.vue';
+
+import { onMounted } from "vue"
+import { useEditorStore } from "@renderer/stores/editorStore"
+
+const editor = useEditorStore()
+
+onMounted(async () => {
+    await editor.loadDefaultSkin()
+})
 
 </script>
 
@@ -21,6 +31,7 @@ import Options from './components/Options.vue';
 
       <main class="editor-section">
         <SkinEditor />
+        <SkinPreview />
         <section class="toolPanel">
           <ToolPanel />
         </section>

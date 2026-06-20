@@ -44,7 +44,7 @@
 <script setup>
 
 import { ref, computed, onMounted, watch} from "vue"
-import { minecraftUV } from "@renderer/data/minecraftUV"
+import { getMinecraftUV } from "@renderer/data/minecraftUV"
 import { useEditorStore } from "@renderer/stores/editorStore"
 
 // STORE
@@ -59,6 +59,9 @@ const pixelSize = computed(() => {
 const canvasSize = computed(() => {
     return SKIN_SIZE * pixelSize.value
 }) 
+const currentUV = computed(() =>
+    getMinecraftUV(editor.modelType)
+)
 
 // CANVAS
 const backgroundCanvas = ref(null)
@@ -76,7 +79,7 @@ let hoverX = -1
 let hoverY = -1
 
 function isAllowedPixel(x, y) {
-    return minecraftUV.some(uv =>
+    return currentUV.value.some(uv =>
         x >= uv.x &&
         x < uv.x + uv.width &&
         y >= uv.y &&
@@ -92,9 +95,7 @@ function drawBackground() {
         canvasSize.value,
         canvasSize.value
     )
-
-    for (const uv of minecraftUV) {
-
+    for (const uv of currentUV.value) {
         bgCtx.fillStyle =
             uv.layer === 0
                 ? "#303030"

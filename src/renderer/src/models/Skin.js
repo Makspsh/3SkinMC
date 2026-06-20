@@ -10,7 +10,7 @@ export class Skin {
     }
 
     getIndex(x, y) {
-        return ( y * this.width + x ) * 4
+        return (y * this.width + x) * 4
     }
 
     isValidPixel(x, y) {
@@ -84,6 +84,33 @@ export class Skin {
 
     fromImageData(imageData) {
         this.data.set(
+            imageData.data
+        )
+    }
+
+    async loadImage(src) {
+        const image = new Image()
+        image.src = src
+        await new Promise((resolve, reject) => {
+            image.onload = resolve
+            image.onerror = reject
+        })
+        const canvas = document.createElement("canvas")
+        canvas.width = 64
+        canvas.height = 64
+        const ctx = canvas.getContext("2d")
+        ctx.drawImage(
+            image,
+            0,
+            0
+        )
+        const imageData = ctx.getImageData(
+            0,
+            0,
+            64,
+            64
+        )
+        this.pixels.set(
             imageData.data
         )
     }

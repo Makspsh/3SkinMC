@@ -3,6 +3,9 @@ import { ref } from "vue"
 
 import { Skin } from "@renderer/models/Skin"
 
+import Steve from "@renderer/assets/skins/steve.png"
+import Alex from "@renderer/assets/skins/alex.png"
+
 export const useEditorStore = defineStore(
     "editor",
     () => {
@@ -24,6 +27,7 @@ export const useEditorStore = defineStore(
         const zoom = ref(8)
         const showOuterLayer = ref(true)
         const skinVersion = ref(0)
+        const modelType = ref("classic")
 
         // ИНСТРУМЕНТЫ
         function drawPixel(x, y) {
@@ -93,6 +97,31 @@ export const useEditorStore = defineStore(
             skinVersion.value++
         }
 
+        async function setModel(type) {
+            modelType.value = type
+            await loadDefaultSkin()
+        }
+
+        function setOuterLayer(value) {
+            showOuterLayer.value = value
+        }
+
+        // START SKIN
+        async function loadDefaultSkin() {
+            try {
+                const image =
+                    modelType.value === "slim"
+                        ? Alex
+                        : Steve
+                console.log("Loading:", image)
+                await skin.loadImage(image)
+                skinVersion.value++
+                console.log("Skin loaded")
+            } catch (error) {
+                console.error("Skin load error:", error)
+            }
+        }
+
         // EXPORT
         return {
             // данные
@@ -115,7 +144,12 @@ export const useEditorStore = defineStore(
 
             // скин
             clearSkin,
-            replaceSkin
+            replaceSkin,
+            modelType,
+            setModel,
+            showOuterLayer,
+            setOuterLayer,
+            loadDefaultSkin
         }
     }
 )
